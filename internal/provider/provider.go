@@ -5,7 +5,9 @@ package provider
 
 import (
 	"context"
+	"crypto/tls"
 	"fmt"
+	"net/http"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
@@ -28,11 +30,12 @@ type PleasantpasswordProvider struct {
 
 // ScaffoldingProviderModel describes the provider data model.
 type PleasantpasswordProviderModel struct {
-	ServerURL    types.String `tfsdk:"server_url"`
-	Username     types.String `tfsdk:"username"`
-	Password     types.String `tfsdk:"password"`
-	OTP_CODE     types.String `tfsdk:"opt_code"`
-	OTP_PROVIDER types.String `tfsdk:"opt_provider"`
+	ServerURL      types.String `tfsdk:"server_url"`
+	Username       types.String `tfsdk:"username"`
+	Password       types.String `tfsdk:"password"`
+	Allow_insecure types.Bool   `tfsdk:"allow_insecure"`
+	OTP_CODE       types.String `tfsdk:"opt_code"`
+	OTP_PROVIDER   types.String `tfsdk:"opt_provider"`
 }
 
 type ProviderClient struct {
@@ -67,12 +70,19 @@ func (p *PleasantpasswordProvider) Schema(ctx context.Context, req provider.Sche
 			"opt_provider": schema.StringAttribute{
 				Optional: true,
 			},
+			"allow_insecure": schema.BoolAttribute{
+				Optional: true,
+			},
 		},
 	}
 }
 
 func (p *PleasantpasswordProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 	var data PleasantpasswordProviderModel
+
+	if data.Allow_insecure.IsNull() {
+		data.Allow_insecure = types.BoolValue(false)
+	}
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
 
@@ -84,6 +94,10 @@ func (p *PleasantpasswordProvider) Configure(ctx context.Context, req provider.C
 	// if data.Endpoint.IsNull() { /* ... */ }
 
 	// Example client configuration for data sources and resources
+
+	if data.Allow_insecure.ValueBool() {
+		http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+	}
 
 	cfg := PPSClient.NewConfiguration()
 	cfg.Host = data.ServerURL.ValueString()
@@ -136,7 +150,7 @@ func (p *PleasantpasswordProvider) Configure(ctx context.Context, req provider.C
 
 func (p *PleasantpasswordProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
-		NewExampleResource,
+		NewfolderResource,
 	}
 }
 
