@@ -29,5 +29,6 @@ provider "scaffolding" {
 
 ### Optional
 
+- `allow_insecure` (Boolean)
 - `opt_code` (String, Sensitive)
 - `opt_provider` (String)

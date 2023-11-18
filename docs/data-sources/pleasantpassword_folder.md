@@ -19,16 +19,13 @@ Example data source
 
 - `folderid` (String) Example identifier
 
-### Optional
-
-- `id` (String) Example configurable attribute
-
 ### Read-Only
 
 - `children` (Attributes List) (see [below for nested schema](#nestedatt--children))
 - `created` (String) Example identifier
 - `credentials` (Attributes List) (see [below for nested schema](#nestedatt--credentials))
 - `expires` (String) Example identifier
+- `id` (String) Example configurable attribute
 - `modified` (String) Example identifier
 - `name` (String) Example identifier
 - `notes` (String) Example identifier
