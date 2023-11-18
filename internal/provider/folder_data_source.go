@@ -96,7 +96,6 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
 				MarkdownDescription: "Example configurable attribute",
-				Optional:            true,
 				Computed:            true,
 			},
 			"folderid": schema.StringAttribute{
@@ -313,6 +312,7 @@ func (d *FolderDataSource) Configure(ctx context.Context, req datasource.Configu
 	}
 
 	providerclient, ok := req.ProviderData.(ProviderClient)
+
 	if !ok {
 		resp.Diagnostics.AddError(
 			"Unexpected Data Source Configure Type",
@@ -331,7 +331,7 @@ func (d *FolderDataSource) fetchTags(res []PPSClient.V6TagResult) []Tag {
 	var tags = []Tag{}
 	for _, v := range res {
 		tag := Tag{}
-		tag.Name = types.StringValue(*v.Name)
+		tag.Name = types.StringValue(v.GetName())
 		tags = append(tags, tag)
 	}
 
@@ -376,9 +376,9 @@ func (d *FolderDataSource) fetchChildren(res []PPSClient.V6CredentialGroupOutput
 		child.Modified = types.StringValue("Not implemented")
 		child.Expires = types.StringValue(v.GetExpires())
 
-		child.Tags = d.fetchTags(v.Tags)
+		child.Tags = d.fetchTags(v.GetTags())
 
-		child.Credentials = d.fetchCredentials(v.Credentials)
+		child.Credentials = d.fetchCredentials(v.GetCredentials())
 
 		children = append(children, child)
 
@@ -428,18 +428,18 @@ func (d *FolderDataSource) Read(ctx context.Context, req datasource.ReadRequest,
 		return
 	}
 
-	data.Id = types.StringValue(*res.Id)
-	data.Name = types.StringValue(*res.Name)
-	data.ParentID = types.StringValue(*res.ParentId)
-	data.Notes = types.StringValue(*res.Notes)
+	data.Id = types.StringValue(res.GetId())
+	data.Name = types.StringValue(res.GetName())
+	data.ParentID = types.StringValue(res.GetParentId())
+	data.Notes = types.StringValue(res.GetNotes())
 	data.Created = types.StringValue("Not implemented")
 	data.Modified = types.StringValue("Not implemented")
 	data.Expires = types.StringValue(res.GetExpires())
 
-	data.Tags = d.fetchTags(res.Tags)
+	data.Tags = d.fetchTags(res.GetTags())
 
-	data.Credentials = d.fetchCredentials(res.Credentials)
-	data.Children = d.fetchChildren(res.Children)
+	data.Credentials = d.fetchCredentials(res.GetCredentials())
+	data.Children = d.fetchChildren(res.GetChildren())
 
 	// Write logs using the tflog package
 	// Documentation: https://terraform.io/plugin/log
