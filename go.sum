@@ -169,6 +169,8 @@ github.com/theochita/go-pleasant-password v0.0.0-20231031120441-cd7298cc57e9 h1:
 github.com/theochita/go-pleasant-password v0.0.0-20231031120441-cd7298cc57e9/go.mod h1:GIaumrfmQ3a9C/IrHukDCfTnvEZRU75Jym55OYTBBVg=
 github.com/theochita/go-pleasant-password v0.0.0-20231108161900-1aa004999540 h1:KdQmTqOOpnGgdWeGoHaJ08HknAqFuvI0tYWEin6IfFc=
 github.com/theochita/go-pleasant-password v0.0.0-20231108161900-1aa004999540/go.mod h1:GIaumrfmQ3a9C/IrHukDCfTnvEZRU75Jym55OYTBBVg=
+github.com/theochita/go-pleasant-password v0.0.0-20231118201012-998deb731114 h1:57Yh98iXXZJMmJbw1Mb8rU54tprupJRaZSmAE5uW/Dk=
+github.com/theochita/go-pleasant-password v0.0.0-20231118201012-998deb731114/go.mod h1:GIaumrfmQ3a9C/IrHukDCfTnvEZRU75Jym55OYTBBVg=
 github.com/vmihailenco/msgpack v3.3.3+incompatible/go.mod h1:fy3FlTQTDXWkZ7Bh6AcGMlsjHatGryHQYUTf1ShIgkk=
 github.com/vmihailenco/msgpack v4.0.4+incompatible h1:dSLoQfGFAo3F6OoNhwUmLwVgaUXK79GlxNBwueZn0xI=
 github.com/vmihailenco/msgpack v4.0.4+incompatible/go.mod h1:fy3FlTQTDXWkZ7Bh6AcGMlsjHatGryHQYUTf1ShIgkk=
