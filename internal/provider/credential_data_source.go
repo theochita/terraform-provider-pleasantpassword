@@ -233,11 +233,11 @@ func (d *CredentialDataSource) Read(ctx context.Context, req datasource.ReadRequ
 		return
 	}
 
-	sanitypassword, err := strconv.Unquote(pwdres)
+	sanitypassword, err := strconv.Unquote(pwdres) // used to remove the quotes and escape characters from the password
 	if err != nil {
 		sanitypassword = pwdres
 	}
-	data.Password = types.StringValue(sanitypassword) // "\"MyPassword01\""
+	data.Password = types.StringValue(sanitypassword)
 
 	// Write logs using the tflog package
 	// Documentation: https://terraform.io/plugin/log
