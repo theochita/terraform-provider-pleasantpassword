@@ -6,7 +6,7 @@ package provider
 import (
 	"context"
 	"fmt"
-	"strings"
+	"strconv"
 
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -137,7 +137,11 @@ func (r *FolderResource) Create(ctx context.Context, req resource.CreateRequest,
 		return
 	}
 
-	sanityresult := strings.Trim(res, "\"\\") //remove quotes and backslashes from result
+	sanityresult, err := strconv.Unquote(res)
+	if err != nil {
+		sanityresult = res
+	}
+
 	data.Id = types.StringValue(sanityresult)
 	data.Name = types.StringValue(param.GetName())
 	data.Notes = types.StringValue(param.GetNotes())
