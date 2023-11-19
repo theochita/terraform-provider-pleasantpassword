@@ -150,7 +150,8 @@ func (p *PleasantpasswordProvider) Configure(ctx context.Context, req provider.C
 
 func (p *PleasantpasswordProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
-		NewfolderResource,
+		NewFolderResource,
+		NewCredentialResource,
 	}
 }
 
