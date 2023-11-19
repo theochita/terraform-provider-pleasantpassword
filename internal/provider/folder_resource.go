@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -21,7 +20,7 @@ import (
 var _ resource.Resource = &FolderResource{}
 var _ resource.ResourceWithImportState = &FolderResource{}
 
-func NewfolderResource() resource.Resource {
+func NewFolderResource() resource.Resource {
 	return &FolderResource{}
 }
 
@@ -236,6 +235,8 @@ func (r *FolderResource) Update(ctx context.Context, req resource.UpdateRequest,
 func (r *FolderResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
 	var data FolderResourceModel
 
+	//Delete removes current folder and all subfolders and credentials
+
 	// Read Terraform prior state data into the model
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
 
@@ -268,5 +269,5 @@ func (r *FolderResource) Delete(ctx context.Context, req resource.DeleteRequest,
 }
 
 func (r *FolderResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	resource.ImportStatePassthroughID(ctx, path.Root("id"), req, resp)
+	// not implemented
 }
