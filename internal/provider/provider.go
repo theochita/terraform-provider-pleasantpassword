@@ -157,6 +157,7 @@ func (p *PleasantpasswordProvider) Resources(ctx context.Context) []func() resou
 func (p *PleasantpasswordProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		NewFolderDataSource,
+		NewCredentialDataSource,
 	}
 }
 
