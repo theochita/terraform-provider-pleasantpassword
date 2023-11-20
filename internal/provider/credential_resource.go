@@ -129,18 +129,6 @@ func (r *CredentialResource) Configure(ctx context.Context, req resource.Configu
 
 }
 
-func (d *CredentialResource) fetchTags(res []PPSClient.V6TagResult) []Tag {
-	var tags = []Tag{}
-	for _, v := range res {
-		tag := Tag{}
-		tag.Name = types.StringValue(v.GetName())
-		tags = append(tags, tag)
-	}
-
-	return tags
-
-}
-
 func (r *CredentialResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
 	var data CredentialResourceModel
 

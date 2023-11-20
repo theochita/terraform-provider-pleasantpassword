@@ -148,30 +148,6 @@ func (d *CredentialDataSource) fetchTags(res []PPSClient.V6TagResult) []Tag {
 
 }
 
-func (d *CredentialDataSource) fetchCredentials(res []PPSClient.V6CredentialResult) []Credential {
-	var creds = []Credential{}
-	for _, v := range res {
-		cred := Credential{}
-		cred.Id = types.StringValue(v.GetId())
-		cred.Name = types.StringValue(v.GetName())
-		cred.Username = types.StringValue(v.GetUsername())
-		cred.Url = types.StringValue(v.GetUrl())
-		cred.Notes = types.StringValue(v.GetNotes())
-		cred.GroupId = types.StringValue(v.GetGroupId())
-		cred.Created = types.StringValue("Not implemented")
-		cred.Modified = types.StringValue("Not implemented")
-		cred.Expires = types.StringValue(v.GetExpires())
-
-		cred.Tags = d.fetchTags(v.Tags)
-
-		creds = append(creds, cred)
-
-	}
-
-	return creds
-
-}
-
 func (d *CredentialDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
 	var data CredentialDataSourceModel
 
