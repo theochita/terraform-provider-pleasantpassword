@@ -160,6 +160,7 @@ func (p *PleasantpasswordProvider) DataSources(ctx context.Context) []func() dat
 		NewFolderDataSource,
 		NewCredentialDataSource,
 		NewSearchDataSource,
+		NewFolderRootDataSource,
 	}
 }
 
