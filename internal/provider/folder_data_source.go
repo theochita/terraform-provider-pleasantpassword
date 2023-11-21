@@ -12,6 +12,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 	PPSClient "github.com/theochita/go-pleasant-password"
+	"github.com/theochita/terraform-provider-pleasant-password-server/internal/provider/models"
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
@@ -29,59 +30,17 @@ type FolderDataSource struct {
 
 // ExampleDataSourceModel describes the data source data model.
 type FolderDataSourceModel struct {
-	Id          types.String      `tfsdk:"id"`
-	FolderID    types.String      `tfsdk:"folderid"`
-	Name        types.String      `tfsdk:"name"`
-	ParentID    types.String      `tfsdk:"parentid"`
-	Credentials []Credential      `tfsdk:"credentials"`
-	Children    []CredentialGroup `tfsdk:"children"`
-	Tags        []Tag             `tfsdk:"tags"`
-	Notes       types.String      `tfsdk:"notes"`
-	Created     types.String      `tfsdk:"created"`
-	Modified    types.String      `tfsdk:"modified"`
-	Expires     types.String      `tfsdk:"expires"`
-}
-
-type CredentialGroup struct {
-	//
-	//CustomUserFields map[string]interface{} `json:"CustomUserFields,omitempty"`
-	//
-	//CustomApplicationFields    map[string]interface{}    `json:"CustomApplicationFields,omitempty"`
-	Children    []CredentialGroup `tfsdk:"children"`
-	Credentials []Credential      `tfsdk:"credentials"`
-	Tags        []Tag             `tfsdk:"tags"`
-	//HasModifyEntriesAccess     *bool                     `json:"HasModifyEntriesAccess,omitempty"`
-	//HasViewEntryContentsAccess *bool                     `json:"HasViewEntryContentsAccess,omitempty"`
-	//CommentPrompts             *V6CommentPromptResult    `json:"CommentPrompts,omitempty"`
-	Id       types.String `tfsdk:"id"`
-	Name     types.String `tfsdk:"name"`
-	ParentId types.String `tfsdk:"parentid"`
-	Notes    types.String `tfsdk:"notes"`
-	Created  types.String `tfsdk:"created"`
-	Modified types.String `tfsdk:"modified"`
-	Expires  types.String `tfsdk:"expires"`
-}
-
-type Credential struct {
-	//
-	//	CustomUserFields map[string]interface{} `json:"CustomUserFields,omitempty"`
-	//
-	//	CustomApplicationFields    map[string]interface{} `json:"CustomApplicationFields,omitempty"`
-	Tags []Tag        `tfsdk:"tags"`
-	Id   types.String `tfsdk:"id"`
-	Name types.String `tfsdk:"name"`
-
-	Username types.String `tfsdk:"username"`
-	Url      types.String `tfsdk:"url"`
-	Notes    types.String `tfsdk:"notes"`
-	GroupId  types.String `tfsdk:"groupid"`
-	Created  types.String `tfsdk:"created"`
-	Modified types.String `tfsdk:"modified"`
-	Expires  types.String `tfsdk:"expires"`
-}
-
-type Tag struct {
-	Name types.String `tfsdk:"name"`
+	Id          types.String             `tfsdk:"id"`
+	FolderID    types.String             `tfsdk:"folderid"`
+	Name        types.String             `tfsdk:"name"`
+	ParentID    types.String             `tfsdk:"parentid"`
+	Credentials []models.Credential      `tfsdk:"credentials"`
+	Children    []models.CredentialGroup `tfsdk:"children"`
+	Tags        []models.Tag             `tfsdk:"tags"`
+	Notes       types.String             `tfsdk:"notes"`
+	Created     types.String             `tfsdk:"created"`
+	Modified    types.String             `tfsdk:"modified"`
+	Expires     types.String             `tfsdk:"expires"`
 }
 
 func (d FolderDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
@@ -327,10 +286,10 @@ func (d *FolderDataSource) Configure(ctx context.Context, req datasource.Configu
 
 }
 
-func (d *FolderDataSource) fetchTags(res []PPSClient.V6TagResult) []Tag {
-	var tags = []Tag{}
+func (d *FolderDataSource) fetchTags(res []PPSClient.V6TagResult) []models.Tag {
+	var tags = []models.Tag{}
 	for _, v := range res {
-		tag := Tag{}
+		tag := models.Tag{}
 		tag.Name = types.StringValue(v.GetName())
 		tags = append(tags, tag)
 	}
@@ -339,10 +298,10 @@ func (d *FolderDataSource) fetchTags(res []PPSClient.V6TagResult) []Tag {
 
 }
 
-func (d *FolderDataSource) fetchCredentials(res []PPSClient.V6CredentialResult) []Credential {
-	var creds = []Credential{}
+func (d *FolderDataSource) fetchCredentials(res []PPSClient.V6CredentialResult) []models.Credential {
+	var creds = []models.Credential{}
 	for _, v := range res {
-		cred := Credential{}
+		cred := models.Credential{}
 		cred.Id = types.StringValue(v.GetId())
 		cred.Name = types.StringValue(v.GetName())
 		cred.Username = types.StringValue(v.GetUsername())
@@ -363,11 +322,11 @@ func (d *FolderDataSource) fetchCredentials(res []PPSClient.V6CredentialResult) 
 
 }
 
-func (d *FolderDataSource) fetchChildren(res []PPSClient.V6CredentialGroupOutput) []CredentialGroup {
+func (d *FolderDataSource) fetchChildren(res []PPSClient.V6CredentialGroupOutput) []models.CredentialGroup {
 
-	var children = []CredentialGroup{}
+	var children = []models.CredentialGroup{}
 	for _, v := range res {
-		child := CredentialGroup{}
+		child := models.CredentialGroup{}
 		child.Id = types.StringValue(v.GetId())
 		child.Name = types.StringValue(v.GetName())
 		child.ParentId = types.StringValue(v.GetParentId())

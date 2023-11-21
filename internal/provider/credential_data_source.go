@@ -13,6 +13,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 	PPSClient "github.com/theochita/go-pleasant-password"
+	"github.com/theochita/terraform-provider-pleasant-password-server/internal/provider/models"
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
@@ -32,7 +33,7 @@ type CredentialDataSource struct {
 type CredentialDataSourceModel struct {
 	Id           types.String `tfsdk:"id"`
 	CredentialID types.String `tfsdk:"credential_id"`
-	Tags         []Tag        `tfsdk:"tags"`
+	Tags         []models.Tag `tfsdk:"tags"`
 	Name         types.String `tfsdk:"name"`
 	Username     types.String `tfsdk:"username"`
 	Password     types.String `tfsdk:"password"`
@@ -136,10 +137,10 @@ func (d *CredentialDataSource) Configure(ctx context.Context, req datasource.Con
 
 }
 
-func (d *CredentialDataSource) fetchTags(res []PPSClient.V6TagResult) []Tag {
-	var tags = []Tag{}
+func (d *CredentialDataSource) fetchTags(res []PPSClient.V6TagResult) []models.Tag {
+	var tags = []models.Tag{}
 	for _, v := range res {
-		tag := Tag{}
+		tag := models.Tag{}
 		tag.Name = types.StringValue(v.GetName())
 		tags = append(tags, tag)
 	}
