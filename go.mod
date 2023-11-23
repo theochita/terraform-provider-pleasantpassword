@@ -1,4 +1,4 @@
-module github.com/theochita/terraform-provider-pleasant-password-server
+module github.com/theochita/terraform-provider-pleasantpassword
 
 go 1.19
 

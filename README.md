@@ -9,11 +9,11 @@
 
 1. Clone the repository
 ```shell
-git clone git@github.com:theochita/terraform-provider-pleasant-password-server.git
+git clone git@github.com:theochita/terraform-provider-pleasantpassword.git
 ```
 2. Enter the repository directory
 ```shell
-cd terraform-provider-pleasant-password-server/
+cd terraform-provider-pleasantpassword/
 ```
 3. Build the provider using the Go `install` command:
 

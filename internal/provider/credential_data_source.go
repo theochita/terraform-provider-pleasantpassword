@@ -13,7 +13,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 	PPSClient "github.com/theochita/go-pleasant-password"
-	"github.com/theochita/terraform-provider-pleasant-password-server/internal/provider/models"
+	"github.com/theochita/terraform-provider-pleasantpassword/internal/provider/models"
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
