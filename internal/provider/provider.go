@@ -183,9 +183,17 @@ func (p *PleasantpasswordProvider) Configure(ctx context.Context, req provider.C
 	}
 
 	if data.Allow_insecure.ValueBool() {
-		http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+		if transport, ok := http.DefaultTransport.(*http.Transport); ok {
+			transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+		} else {
+			resp.Diagnostics.AddError("Failed to set InsecureSkipVerify", "Failed to set InsecureSkipVerify, this is a bug, please report it")
+		}
 	} else {
-		http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: false}
+		if transport, ok := http.DefaultTransport.(*http.Transport); ok {
+			transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: false}
+		} else {
+			resp.Diagnostics.AddError("Failed to set InsecureSkipVerify", "Failed to set InsecureSkipVerify, this is a bug, please report it")
+		}
 	}
 
 	cfg := PPSClient.NewConfiguration()
