@@ -37,8 +37,6 @@ type PleasantpasswordProviderModel struct {
 	Username       types.String `tfsdk:"username"`
 	Password       types.String `tfsdk:"password"`
 	Allow_insecure types.Bool   `tfsdk:"allow_insecure"`
-	OTP_CODE       types.String `tfsdk:"opt_code"`
-	OTP_PROVIDER   types.String `tfsdk:"opt_provider"`
 }
 
 type ProviderClient struct {
@@ -66,15 +64,6 @@ func (p *PleasantpasswordProvider) Schema(ctx context.Context, req provider.Sche
 			},
 			"username": schema.StringAttribute{
 				MarkdownDescription: "Required: The username of the Pleasant Password Server, Can be specified with the `PPS_USERNAME` environment variable",
-				Optional:            true,
-			},
-			"opt_code": schema.StringAttribute{
-				MarkdownDescription: "The OTP code of the Pleasant Password Server",
-				Optional:            true,
-				Sensitive:           true,
-			},
-			"opt_provider": schema.StringAttribute{
-				MarkdownDescription: "The OTP provider of the Pleasant Password Server",
 				Optional:            true,
 			},
 			"allow_insecure": schema.BoolAttribute{
@@ -214,35 +203,22 @@ func (p *PleasantpasswordProvider) Configure(ctx context.Context, req provider.C
 	password := data.Password.ValueString()
 	username := data.Username.ValueString()
 
-	opt_code := data.OTP_CODE.ValueString()
-	opt_provider := data.OTP_PROVIDER.ValueString()
+	res, httperr, err := client.AuthenticationAPI.PostOauthToken(clientctx).GrantType(grantType).Username(username).Password(password).Execute()
 
-	var override_bearertoken string = ""
-
-	override_bearertoken = ""
-
-	if override_bearertoken == "" {
-
-		res, httperr, err := client.AuthenticationAPI.PostOauthToken(clientctx).GrantType(grantType).Username(username).Password(password).XPleasantOTP(opt_code).XPleasantOTPProvider(opt_provider).Execute()
-
-		if err != nil {
-			fmt.Printf("error in auth request {%s}  \n", err)
-			if httperr != nil {
-				resp.Diagnostics.AddError(fmt.Sprintf("Auth Request Failed with %s", err.Error()), fmt.Sprintf("%s", httperr.Body)) // ADD REAL ERROR MODES TO THE OPENAPI SPECC
-			} else {
-				resp.Diagnostics.AddError("Auth Request Failed", err.Error())
-			}
-
-			return
+	if err != nil {
+		fmt.Printf("error in auth request {%s}  \n", err)
+		if httperr != nil {
+			resp.Diagnostics.AddError(fmt.Sprintf("Auth Request Failed with %s", err.Error()), fmt.Sprintf("%s", httperr.Body)) // ADD REAL ERROR MODES TO THE OPENAPI SPECC
 		} else {
-
-			fmt.Printf("Authenticated Successful\n")
-			//fmt.Printf("Bearer token: %s\n", *res.AccessToken)
-			clientctx = context.WithValue(context.Background(), PPSClient.ContextAccessToken, *res.AccessToken)
+			resp.Diagnostics.AddError("Auth Request Failed", err.Error())
 		}
 
+		return
 	} else {
-		clientctx = context.WithValue(context.Background(), PPSClient.ContextAccessToken, override_bearertoken)
+
+		fmt.Printf("Authenticated Successful\n")
+		//fmt.Printf("Bearer token: %s\n", *res.AccessToken)
+		clientctx = context.WithValue(context.Background(), PPSClient.ContextAccessToken, *res.AccessToken)
 	}
 
 	resp.DataSourceData = ProviderClient{Client: *client, Ctx: clientctx}
