@@ -13,8 +13,12 @@ PPS API : Programatically control Pleasant Password Server.
 ## Example Usage
 
 ```terraform
-provider "scaffolding" {
-  # example configuration here
+provider "pleasantpassword" {
+
+  server_url = "localhost:10001"
+  password   = "secretpassword"
+  username   = "admin"
+
 }
 ```
 
@@ -24,8 +28,6 @@ provider "scaffolding" {
 ### Optional
 
 - `allow_insecure` (Boolean) Allow insecure connections to the Pleasant Password Server, Can be specified with the `PPS_ALLOW_INSECURE` environment variable
-- `opt_code` (String, Sensitive) The OTP code of the Pleasant Password Server
-- `opt_provider` (String) The OTP provider of the Pleasant Password Server
 - `password` (String, Sensitive) Required: The password of the Pleasant Password Server, Can be specified with the `PPS_PASSWORD` environment variable
 - `server_url` (String) Required: The URL of the Pleasant Password Server, Can be specified with the `PPS_SERVER_URL` environment variable
 - `username` (String) Required: The username of the Pleasant Password Server, Can be specified with the `PPS_USERNAME` environment variable
