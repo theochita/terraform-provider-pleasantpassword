@@ -48,39 +48,39 @@ func (d FolderDataSource) Metadata(ctx context.Context, req datasource.MetadataR
 func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "Example data source",
+		MarkdownDescription: "The `folder` data source can be used to access information about a folder.",
 
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				MarkdownDescription: "Example configurable attribute",
+				MarkdownDescription: "Identifier of the folder",
 				Computed:            true,
 			},
 			"folderid": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "Required: Id of the folder",
 				Required:            true,
 			},
 			"name": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "Name of the folder",
 				Computed:            true,
 			},
 			"parentid": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "Identifier of the parent folder",
 				Computed:            true,
 			},
 			"notes": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "Notes for the folder",
 				Computed:            true,
 			},
 			"created": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "Creation timestamp of the folder",
 				Computed:            true,
 			},
 			"modified": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "Last modified timestamp of the folder",
 				Computed:            true,
 			},
 			"expires": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "Expiration timestamp of the folder",
 				Computed:            true,
 			},
 
@@ -89,7 +89,7 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"name": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "Name of the tag",
 							Computed:            true,
 						},
 					},
@@ -100,39 +100,39 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"id": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The unique identifier of the credential",
 							Computed:            true,
 						},
 						"name": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The name of the credential",
 							Computed:            true,
 						},
 						"username": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The username of the credential",
 							Computed:            true,
 						},
 						"url": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The URL of the credential",
 							Computed:            true,
 						},
 						"notes": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The notes of the credential",
 							Computed:            true,
 						},
 						"folderid": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The folder ID of the credential",
 							Computed:            true,
 						},
 						"created": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The creation date of the credential",
 							Computed:            true,
 						},
 						"modified": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The modification date of the credential",
 							Computed:            true,
 						},
 						"expires": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The expiration date of the credential",
 							Computed:            true,
 						},
 
@@ -141,7 +141,7 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 							NestedObject: schema.NestedAttributeObject{
 								Attributes: map[string]schema.Attribute{
 									"name": schema.StringAttribute{
-										MarkdownDescription: "Example identifier",
+										MarkdownDescription: "The name of the tag",
 										Computed:            true,
 									},
 								},
@@ -155,37 +155,35 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"id": schema.StringAttribute{
-							MarkdownDescription: "Example configurable attribute",
-							Optional:            true,
+							MarkdownDescription: "Identifier of the child folder",
 							Computed:            true,
 						},
 						"name": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "Name of the child folder",
 							Computed:            true,
 						},
 						"parentid": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "Identifier of the  parent folder",
 							Computed:            true,
 						},
 						"notes": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "Notes for the child folder",
 							Computed:            true,
 						},
 						"created": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "Creation timestamp of the child folder",
 							Computed:            true,
 						},
 						"modified": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "Last modified timestamp of the child folder",
 							Computed:            true,
 						},
 						"expires": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "Expiration timestamp of the child folder",
 							Computed:            true,
 						},
 						"children": schema.ListNestedAttribute{
-							MarkdownDescription: "Example configurable attribute",
-							Optional:            true,
+							MarkdownDescription: "Empty list of child folders",
 							Computed:            true,
 							NestedObject:        schema.NestedAttributeObject{},
 						},
@@ -193,9 +191,8 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 							Computed: true,
 							NestedObject: schema.NestedAttributeObject{
 								Attributes: map[string]schema.Attribute{
-
 									"name": schema.StringAttribute{
-										MarkdownDescription: "Example identifier",
+										MarkdownDescription: "Name of the tag",
 										Computed:            true,
 									},
 								},
@@ -206,48 +203,48 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 							NestedObject: schema.NestedAttributeObject{
 								Attributes: map[string]schema.Attribute{
 									"id": schema.StringAttribute{
-										MarkdownDescription: "Example identifier",
+										MarkdownDescription: "The unique identifier of the credential",
 										Computed:            true,
 									},
 									"name": schema.StringAttribute{
-										MarkdownDescription: "Example identifier",
+										MarkdownDescription: "The name of the credential",
 										Computed:            true,
 									},
 									"username": schema.StringAttribute{
-										MarkdownDescription: "Example identifier",
+										MarkdownDescription: "The username of the credential",
 										Computed:            true,
 									},
 									"url": schema.StringAttribute{
-										MarkdownDescription: "Example identifier",
+										MarkdownDescription: "The URL of the credential",
 										Computed:            true,
 									},
 									"notes": schema.StringAttribute{
-										MarkdownDescription: "Example identifier",
+										MarkdownDescription: "The notes of the credential",
 										Computed:            true,
 									},
 									"folderid": schema.StringAttribute{
-										MarkdownDescription: "Example identifier",
+										MarkdownDescription: "The folder ID of the credential",
 										Computed:            true,
 									},
 									"created": schema.StringAttribute{
-										MarkdownDescription: "Example identifier",
+										MarkdownDescription: "The creation date of the credential",
 										Computed:            true,
 									},
 									"modified": schema.StringAttribute{
-										MarkdownDescription: "Example identifier",
+										MarkdownDescription: "The modification date of the credential",
 										Computed:            true,
 									},
 									"expires": schema.StringAttribute{
-										MarkdownDescription: "Example identifier",
+										MarkdownDescription: "The expiration date of the credential",
 										Computed:            true,
 									},
+
 									"tags": schema.ListNestedAttribute{
 										Computed: true,
 										NestedObject: schema.NestedAttributeObject{
 											Attributes: map[string]schema.Attribute{
-
 												"name": schema.StringAttribute{
-													MarkdownDescription: "Example identifier",
+													MarkdownDescription: "The name of the tag",
 													Computed:            true,
 												},
 											},

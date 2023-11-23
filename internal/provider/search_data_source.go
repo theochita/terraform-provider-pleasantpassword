@@ -44,7 +44,7 @@ func (d *SearchDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 
 		Attributes: map[string]schema.Attribute{
 			"search": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The search query for credentials and folders.",
 				Required:            true,
 			},
 			"credentials": schema.ListNestedAttribute{
@@ -52,31 +52,31 @@ func (d *SearchDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"id": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The identifier of the credential.",
 							Computed:            true,
 						},
 						"name": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The name of the credential.",
 							Computed:            true,
 						},
 						"username": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The username of the credential.",
 							Computed:            true,
 						},
 						"url": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The URL of the credential.",
 							Computed:            true,
 						},
 						"notes": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The notes of the credential.",
 							Computed:            true,
 						},
 						"folderid": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The identifier of the folder that the credential belongs to.",
 							Computed:            true,
 						},
 						"path": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The path of the credential.",
 							Computed:            true,
 						},
 					},
@@ -87,15 +87,15 @@ func (d *SearchDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"id": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The identifier of the folder.",
 							Computed:            true,
 						},
 						"name": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The name of the folder.",
 							Computed:            true,
 						},
 						"fullpath": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The full path of the folder.",
 							Computed:            true,
 						},
 					},

@@ -38,11 +38,11 @@ func (d FolderRootDataSource) Metadata(ctx context.Context, req datasource.Metad
 func (d *FolderRootDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "Example data source",
+		MarkdownDescription: "Data source for retrieving the top-level root folder information",
 
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The identifier of the folder root",
 				Computed:            true,
 			},
 		},

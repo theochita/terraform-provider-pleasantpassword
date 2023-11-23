@@ -45,27 +45,27 @@ func (r *FolderResource) Metadata(ctx context.Context, req resource.MetadataRequ
 func (r *FolderResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "Example resource",
+		MarkdownDescription: "The `folder` resource allows you to create and manage folders in Pleasant Password Server.",
 
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				MarkdownDescription: "Example configurable attribute",
+				MarkdownDescription: "The unique identifier of the folder.",
 				Computed:            true,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"name": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The name of the folder.",
 				Required:            true,
 			},
 			"parentid": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The identifier of the parent folder.",
 				Optional:            true,
 				Computed:            true,
 			},
 			"notes": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "Additional notes for the folder.",
 				Optional:            true,
 				Computed:            true,
 			},

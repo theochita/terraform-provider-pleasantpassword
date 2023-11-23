@@ -50,54 +50,54 @@ func (r *CredentialResource) Metadata(ctx context.Context, req resource.Metadata
 func (r *CredentialResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "Example resource",
+		MarkdownDescription: "The `credential` resource allows you to create and manage credentials in Pleasant Password Server.",
 
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The unique identifier of the credential.",
 				Computed:            true,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"name": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The name of the credential.",
 				Required:            true,
 			},
 			"username": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The username associated with the credential.",
 				Computed:            true,
 				Optional:            true,
 			},
 			"password": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The password associated with the credential.",
 				Computed:            true,
 				Optional:            true,
 			},
 			"url": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The URL associated with the credential.",
 				Computed:            true,
 				Optional:            true,
 			},
 			"notes": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "Additional notes for the credential.",
 				Computed:            true,
 				Optional:            true,
 			},
 			"folderid": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The folder ID where the credential is stored.",
 				Required:            true,
 			},
 			"created": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The creation timestamp of the credential.",
 				Computed:            true,
 			},
 			"modified": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The last modification timestamp of the credential.",
 				Computed:            true,
 			},
 			"expires": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The expiration date of the credential.",
 				Computed:            true,
 				Optional:            true,
 			},

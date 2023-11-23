@@ -50,51 +50,51 @@ func (d CredentialDataSource) Metadata(ctx context.Context, req datasource.Metad
 func (d *CredentialDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "Example data source",
+		MarkdownDescription: "The `credential` data source can be used to access information about a credential.",
 
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The unique identifier of the credential",
 				Computed:            true,
 			},
 			"credential_id": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The identifier of the credential",
 				Required:            true,
 			},
 			"name": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The name of the credential",
 				Computed:            true,
 			},
 			"username": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The username of the credential",
 				Computed:            true,
 			},
 			"password": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The password of the credential",
 				Computed:            true,
 			},
 			"url": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The URL of the credential",
 				Computed:            true,
 			},
 			"notes": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The notes of the credential",
 				Computed:            true,
 			},
 			"folderid": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The folder ID of the credential",
 				Computed:            true,
 			},
 			"created": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The creation date of the credential",
 				Computed:            true,
 			},
 			"modified": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The modification date of the credential",
 				Computed:            true,
 			},
 			"expires": schema.StringAttribute{
-				MarkdownDescription: "Example identifier",
+				MarkdownDescription: "The expiration date of the credential",
 				Computed:            true,
 			},
 
@@ -103,7 +103,7 @@ func (d *CredentialDataSource) Schema(ctx context.Context, req datasource.Schema
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"name": schema.StringAttribute{
-							MarkdownDescription: "Example identifier",
+							MarkdownDescription: "The name of the tag",
 							Computed:            true,
 						},
 					},
