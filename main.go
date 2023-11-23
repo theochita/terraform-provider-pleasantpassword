@@ -9,7 +9,7 @@ import (
 	"log"
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
-	"github.com/theochita/terraform-provider-pleasant-password-server/internal/provider"
+	"github.com/theochita/terraform-provider-pleasantpassword/internal/provider"
 )
 
 // Run "go generate" to format example terraform files and generate the docs for the registry/website
