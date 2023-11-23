@@ -45,14 +45,14 @@ data "pleasantpassword_folder_root" "get_root_folder" {
 
 resource "pleasantpassword_folder" "create_folder" {
 	name = "acctest_folder"
-	parentid = data.pleasantpassword_folder_root.get_root_folder.id
+	parent_id = data.pleasantpassword_folder_root.get_root_folder.id
 	notes = "testnotes"
  }
 
 
  resource "pleasantpassword_credential" "cred1_test" {
 	name = "acctest_credential%[1]s"
-	folderid =  pleasantpassword_folder.create_folder.id
+	folder_id =  pleasantpassword_folder.create_folder.id
 	password = "acctest_password%[1]s"
 	notes = "acctest notes"
 	username = "acctest_username1"

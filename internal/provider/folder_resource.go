@@ -34,7 +34,7 @@ type FolderResource struct {
 type FolderResourceModel struct {
 	Id       types.String `tfsdk:"id"`
 	Name     types.String `tfsdk:"name"`
-	ParentID types.String `tfsdk:"parentid"`
+	ParentID types.String `tfsdk:"parent_id"`
 	Notes    types.String `tfsdk:"notes"`
 }
 
@@ -59,7 +59,7 @@ func (r *FolderResource) Schema(ctx context.Context, req resource.SchemaRequest,
 				MarkdownDescription: "The name of the folder.",
 				Required:            true,
 			},
-			"parentid": schema.StringAttribute{
+			"parent_id": schema.StringAttribute{
 				MarkdownDescription: "The identifier of the parent folder.",
 				Optional:            true,
 				Computed:            true,

@@ -71,7 +71,7 @@ func (d *SearchDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 							MarkdownDescription: "The notes of the credential.",
 							Computed:            true,
 						},
-						"folderid": schema.StringAttribute{
+						"folder_id": schema.StringAttribute{
 							MarkdownDescription: "The identifier of the folder that the credential belongs to.",
 							Computed:            true,
 						},

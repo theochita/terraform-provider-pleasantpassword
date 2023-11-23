@@ -37,7 +37,7 @@ type CredentialResourceModel struct {
 	Password types.String `tfsdk:"password"`
 	Url      types.String `tfsdk:"url"`
 	Notes    types.String `tfsdk:"notes"`
-	FolderId types.String `tfsdk:"folderid"`
+	FolderId types.String `tfsdk:"folder_id"`
 	Created  types.String `tfsdk:"created"`
 	Modified types.String `tfsdk:"modified"`
 	Expires  types.String `tfsdk:"expires"`
@@ -84,7 +84,7 @@ func (r *CredentialResource) Schema(ctx context.Context, req resource.SchemaRequ
 				Computed:            true,
 				Optional:            true,
 			},
-			"folderid": schema.StringAttribute{
+			"folder_id": schema.StringAttribute{
 				MarkdownDescription: "The folder ID where the credential is stored.",
 				Required:            true,
 			},

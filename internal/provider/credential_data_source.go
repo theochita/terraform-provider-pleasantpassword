@@ -37,7 +37,7 @@ type CredentialDataSourceModel struct {
 	Password     types.String `tfsdk:"password"`
 	Url          types.String `tfsdk:"url"`
 	Notes        types.String `tfsdk:"notes"`
-	FolderId     types.String `tfsdk:"folderid"`
+	FolderId     types.String `tfsdk:"folder_id"`
 	Created      types.String `tfsdk:"created"`
 	Modified     types.String `tfsdk:"modified"`
 	Expires      types.String `tfsdk:"expires"`
@@ -81,7 +81,7 @@ func (d *CredentialDataSource) Schema(ctx context.Context, req datasource.Schema
 				MarkdownDescription: "The notes of the credential",
 				Computed:            true,
 			},
-			"folderid": schema.StringAttribute{
+			"folder_id": schema.StringAttribute{
 				MarkdownDescription: "The folder ID of the credential",
 				Computed:            true,
 			},

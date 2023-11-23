@@ -22,7 +22,7 @@ The `folder` resource allows you to create and manage folders in Pleasant Passwo
 ### Optional
 
 - `notes` (String) Additional notes for the folder.
-- `parentid` (String) The identifier of the parent folder.
+- `parent_id` (String) The identifier of the parent folder.
 
 ### Read-Only
 

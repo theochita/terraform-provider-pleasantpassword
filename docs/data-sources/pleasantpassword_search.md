@@ -29,7 +29,7 @@ Example data source
 
 Read-Only:
 
-- `folderid` (String) The identifier of the folder that the credential belongs to.
+- `folder_id` (String) The identifier of the folder that the credential belongs to.
 - `id` (String) The identifier of the credential.
 - `name` (String) The name of the credential.
 - `notes` (String) The notes of the credential.

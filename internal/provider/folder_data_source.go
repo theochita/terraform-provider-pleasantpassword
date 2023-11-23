@@ -29,9 +29,9 @@ type FolderDataSource struct {
 
 type FolderDataSourceModel struct {
 	Id          types.String             `tfsdk:"id"`
-	FolderID    types.String             `tfsdk:"folderid"`
+	FolderID    types.String             `tfsdk:"folder_id"`
 	Name        types.String             `tfsdk:"name"`
-	ParentID    types.String             `tfsdk:"parentid"`
+	ParentID    types.String             `tfsdk:"parent_id"`
 	Credentials []models.Credential      `tfsdk:"credentials"`
 	Children    []models.CredentialGroup `tfsdk:"children"`
 	Tags        []models.Tag             `tfsdk:"tags"`
@@ -55,7 +55,7 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 				MarkdownDescription: "Identifier of the folder",
 				Computed:            true,
 			},
-			"folderid": schema.StringAttribute{
+			"folder_id": schema.StringAttribute{
 				MarkdownDescription: "Required: Id of the folder",
 				Required:            true,
 			},
@@ -63,7 +63,7 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 				MarkdownDescription: "Name of the folder",
 				Computed:            true,
 			},
-			"parentid": schema.StringAttribute{
+			"parent_id": schema.StringAttribute{
 				MarkdownDescription: "Identifier of the parent folder",
 				Computed:            true,
 			},
@@ -119,7 +119,7 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 							MarkdownDescription: "The notes of the credential",
 							Computed:            true,
 						},
-						"folderid": schema.StringAttribute{
+						"folder_id": schema.StringAttribute{
 							MarkdownDescription: "The folder ID of the credential",
 							Computed:            true,
 						},
@@ -162,7 +162,7 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 							MarkdownDescription: "Name of the child folder",
 							Computed:            true,
 						},
-						"parentid": schema.StringAttribute{
+						"parent_id": schema.StringAttribute{
 							MarkdownDescription: "Identifier of the  parent folder",
 							Computed:            true,
 						},
@@ -222,7 +222,7 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 										MarkdownDescription: "The notes of the credential",
 										Computed:            true,
 									},
-									"folderid": schema.StringAttribute{
+									"folder_id": schema.StringAttribute{
 										MarkdownDescription: "The folder ID of the credential",
 										Computed:            true,
 									},

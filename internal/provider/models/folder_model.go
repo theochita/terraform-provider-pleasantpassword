@@ -15,7 +15,7 @@ type CredentialGroup struct {
 	//CommentPrompts             *V6CommentPromptResult    `json:"CommentPrompts,omitempty"`
 	Id       types.String `tfsdk:"id"`
 	Name     types.String `tfsdk:"name"`
-	ParentId types.String `tfsdk:"parentid"`
+	ParentId types.String `tfsdk:"parent_id"`
 	Notes    types.String `tfsdk:"notes"`
 	Created  types.String `tfsdk:"created"`
 	Modified types.String `tfsdk:"modified"`

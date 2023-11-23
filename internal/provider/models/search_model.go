@@ -14,6 +14,6 @@ type V6CredentialSearchResult struct {
 	Username types.String `tfsdk:"username"`
 	Url      types.String `tfsdk:"url"`
 	Notes    types.String `tfsdk:"notes"`
-	FolderId types.String `tfsdk:"folderid"`
+	FolderId types.String `tfsdk:"folder_id"`
 	Path     types.String `tfsdk:"path"`
 }

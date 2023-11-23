@@ -50,7 +50,7 @@ data "pleasantpassword_credential" "get_credential" {
 
 - `created` (String) The creation date of the credential
 - `expires` (String) The expiration date of the credential
-- `folderid` (String) The folder ID of the credential
+- `folder_id` (String) The folder ID of the credential
 - `id` (String) The unique identifier of the credential
 - `modified` (String) The modification date of the credential
 - `name` (String) The name of the credential

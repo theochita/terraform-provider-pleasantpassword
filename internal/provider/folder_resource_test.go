@@ -47,7 +47,7 @@ data "pleasantpassword_folder_root" "get_root_folder" {
 
 resource "pleasantpassword_folder" "create_folder" {
 	name = "acctest_folder%s"
-	parentid = data.pleasantpassword_folder_root.get_root_folder.id
+	parent_id = data.pleasantpassword_folder_root.get_root_folder.id
 	notes = "testnotes"
    
  }

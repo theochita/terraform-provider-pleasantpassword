@@ -17,7 +17,7 @@ The `credential` resource allows you to create and manage credentials in Pleasan
 
 ### Required
 
-- `folderid` (String) The folder ID where the credential is stored.
+- `folder_id` (String) The folder ID where the credential is stored.
 - `name` (String) The name of the credential.
 
 ### Optional

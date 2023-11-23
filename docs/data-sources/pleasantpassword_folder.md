@@ -28,7 +28,7 @@ data "pleasantpassword_folder" "fetch_root_folder" {
 
 ### Required
 
-- `folderid` (String) Required: Id of the folder
+- `folder_id` (String) Required: Id of the folder
 
 ### Read-Only
 
@@ -40,7 +40,7 @@ data "pleasantpassword_folder" "fetch_root_folder" {
 - `modified` (String) Last modified timestamp of the folder
 - `name` (String) Name of the folder
 - `notes` (String) Notes for the folder
-- `parentid` (String) Identifier of the parent folder
+- `parent_id` (String) Identifier of the parent folder
 - `tags` (Attributes List) (see [below for nested schema](#nestedatt--tags))
 
 <a id="nestedatt--children"></a>
@@ -56,7 +56,7 @@ Read-Only:
 - `modified` (String) Last modified timestamp of the child folder
 - `name` (String) Name of the child folder
 - `notes` (String) Notes for the child folder
-- `parentid` (String) Identifier of the  parent folder
+- `parent_id` (String) Identifier of the  parent folder
 - `tags` (Attributes List) (see [below for nested schema](#nestedatt--children--tags))
 
 <a id="nestedatt--children--children"></a>
@@ -70,7 +70,7 @@ Read-Only:
 
 - `created` (String) The creation date of the credential
 - `expires` (String) The expiration date of the credential
-- `folderid` (String) The folder ID of the credential
+- `folder_id` (String) The folder ID of the credential
 - `id` (String) The unique identifier of the credential
 - `modified` (String) The modification date of the credential
 - `name` (String) The name of the credential
@@ -104,7 +104,7 @@ Read-Only:
 
 - `created` (String) The creation date of the credential
 - `expires` (String) The expiration date of the credential
-- `folderid` (String) The folder ID of the credential
+- `folder_id` (String) The folder ID of the credential
 - `id` (String) The unique identifier of the credential
 - `modified` (String) The modification date of the credential
 - `name` (String) The name of the credential

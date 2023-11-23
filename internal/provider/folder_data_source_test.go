@@ -18,8 +18,8 @@ func TestAccFolderDataSource(t *testing.T) {
 			{
 				Config: testAccFolderDataSourceConfig,
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr("data.pleasantpassword_folder.fetch_root_folder_test", "parentid", "00000000-0000-0000-0000-000000000000"),
-					resource.TestCheckResourceAttrPair("data.pleasantpassword_folder.fetch_root_folder_test", "folderid", "data.pleasantpassword_folder_root.root_folder_id_test", "id"),
+					resource.TestCheckResourceAttr("data.pleasantpassword_folder.fetch_root_folder_test", "parent_id", "00000000-0000-0000-0000-000000000000"),
+					resource.TestCheckResourceAttrPair("data.pleasantpassword_folder.fetch_root_folder_test", "folder_id", "data.pleasantpassword_folder_root.root_folder_id_test", "id"),
 				),
 			},
 		},
@@ -35,7 +35,7 @@ data "pleasantpassword_folder_root" "root_folder_id_test" {
 
 
 data "pleasantpassword_folder" "fetch_root_folder_test" {
-   folderid = data.pleasantpassword_folder_root.root_folder_id_test.id
+   folder_id = data.pleasantpassword_folder_root.root_folder_id_test.id
   
 }
 `

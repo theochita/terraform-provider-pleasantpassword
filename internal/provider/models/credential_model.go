@@ -14,7 +14,7 @@ type Credential struct {
 	Username types.String `tfsdk:"username"`
 	Url      types.String `tfsdk:"url"`
 	Notes    types.String `tfsdk:"notes"`
-	Folderid types.String `tfsdk:"folderid"`
+	Folderid types.String `tfsdk:"folder_id"`
 	Created  types.String `tfsdk:"created"`
 	Modified types.String `tfsdk:"modified"`
 	Expires  types.String `tfsdk:"expires"`
