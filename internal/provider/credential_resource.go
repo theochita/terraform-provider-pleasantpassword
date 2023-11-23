@@ -208,7 +208,7 @@ func (r *CredentialResource) Read(ctx context.Context, req resource.ReadRequest,
 	res, httpres, err := r.client.DefaultAPI.GetV6CredentialsByID(*r.ctx, data.Id.ValueString()).Execute()
 
 	if err != nil {
-		resp.Diagnostics.AddError("failure to invoke API: ", err.Error())
+		resp.State.RemoveResource(ctx)
 		return
 	}
 	if httpres.StatusCode != 200 {
