@@ -3,12 +3,12 @@
 page_title: "pleasantpassword_folder_root Data Source - terraform-provider-pleasant-password-server"
 subcategory: ""
 description: |-
-  Example data source
+  Data source for retrieving the top-level root folder information
 ---
 
 # pleasantpassword_folder_root (Data Source)
 
-Example data source
+Data source for retrieving the top-level root folder information
 
 ## Example Usage
 
@@ -22,4 +22,4 @@ data "pleasantpassword_folder_root" "root_folder_id" {
 
 ### Read-Only
 
-- `id` (String) Example identifier
+- `id` (String) The identifier of the folder root

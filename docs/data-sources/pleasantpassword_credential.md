@@ -3,12 +3,12 @@
 page_title: "pleasantpassword_credential Data Source - terraform-provider-pleasant-password-server"
 subcategory: ""
 description: |-
-  Example data source
+  The credential data source can be used to access information about a credential.
 ---
 
 # pleasantpassword_credential (Data Source)
 
-Example data source
+The `credential` data source can be used to access information about a credential.
 
 ## Example Usage
 
@@ -44,25 +44,25 @@ data "pleasantpassword_credential" "get_credential" {
 
 ### Required
 
-- `credential_id` (String) Example identifier
+- `credential_id` (String) The identifier of the credential
 
 ### Read-Only
 
-- `created` (String) Example identifier
-- `expires` (String) Example identifier
-- `folderid` (String) Example identifier
-- `id` (String) Example identifier
-- `modified` (String) Example identifier
-- `name` (String) Example identifier
-- `notes` (String) Example identifier
-- `password` (String) Example identifier
+- `created` (String) The creation date of the credential
+- `expires` (String) The expiration date of the credential
+- `folderid` (String) The folder ID of the credential
+- `id` (String) The unique identifier of the credential
+- `modified` (String) The modification date of the credential
+- `name` (String) The name of the credential
+- `notes` (String) The notes of the credential
+- `password` (String) The password of the credential
 - `tags` (Attributes List) (see [below for nested schema](#nestedatt--tags))
-- `url` (String) Example identifier
-- `username` (String) Example identifier
+- `url` (String) The URL of the credential
+- `username` (String) The username of the credential
 
 <a id="nestedatt--tags"></a>
 ### Nested Schema for `tags`
 
 Read-Only:
 
-- `name` (String) Example identifier
+- `name` (String) The name of the tag

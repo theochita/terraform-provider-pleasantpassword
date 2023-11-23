@@ -3,12 +3,12 @@
 page_title: "pleasantpassword_credential Resource - terraform-provider-pleasant-password-server"
 subcategory: ""
 description: |-
-  Example resource
+  The credential resource allows you to create and manage credentials in Pleasant Password Server.
 ---
 
 # pleasantpassword_credential (Resource)
 
-Example resource
+The `credential` resource allows you to create and manage credentials in Pleasant Password Server.
 
 
 
@@ -17,19 +17,19 @@ Example resource
 
 ### Required
 
-- `folderid` (String) Example identifier
-- `name` (String) Example identifier
+- `folderid` (String) The folder ID where the credential is stored.
+- `name` (String) The name of the credential.
 
 ### Optional
 
-- `expires` (String) Example identifier
-- `notes` (String) Example identifier
-- `password` (String) Example identifier
-- `url` (String) Example identifier
-- `username` (String) Example identifier
+- `expires` (String) The expiration date of the credential.
+- `notes` (String) Additional notes for the credential.
+- `password` (String) The password associated with the credential.
+- `url` (String) The URL associated with the credential.
+- `username` (String) The username associated with the credential.
 
 ### Read-Only
 
-- `created` (String) Example identifier
-- `id` (String) Example identifier
-- `modified` (String) Example identifier
+- `created` (String) The creation timestamp of the credential.
+- `id` (String) The unique identifier of the credential.
+- `modified` (String) The last modification timestamp of the credential.

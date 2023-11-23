@@ -3,12 +3,12 @@
 page_title: "pleasantpassword_folder Data Source - terraform-provider-pleasant-password-server"
 subcategory: ""
 description: |-
-  Example data source
+  The folder data source can be used to access information about a folder.
 ---
 
 # pleasantpassword_folder (Data Source)
 
-Example data source
+The `folder` data source can be used to access information about a folder.
 
 ## Example Usage
 
@@ -28,38 +28,35 @@ data "pleasantpassword_folder" "fetch_root_folder" {
 
 ### Required
 
-- `folderid` (String) Example identifier
+- `folderid` (String) Required: Id of the folder
 
 ### Read-Only
 
 - `children` (Attributes List) (see [below for nested schema](#nestedatt--children))
-- `created` (String) Example identifier
+- `created` (String) Creation timestamp of the folder
 - `credentials` (Attributes List) (see [below for nested schema](#nestedatt--credentials))
-- `expires` (String) Example identifier
-- `id` (String) Example configurable attribute
-- `modified` (String) Example identifier
-- `name` (String) Example identifier
-- `notes` (String) Example identifier
-- `parentid` (String) Example identifier
+- `expires` (String) Expiration timestamp of the folder
+- `id` (String) Identifier of the folder
+- `modified` (String) Last modified timestamp of the folder
+- `name` (String) Name of the folder
+- `notes` (String) Notes for the folder
+- `parentid` (String) Identifier of the parent folder
 - `tags` (Attributes List) (see [below for nested schema](#nestedatt--tags))
 
 <a id="nestedatt--children"></a>
 ### Nested Schema for `children`
 
-Optional:
-
-- `children` (Attributes List) Example configurable attribute (see [below for nested schema](#nestedatt--children--children))
-- `id` (String) Example configurable attribute
-
 Read-Only:
 
-- `created` (String) Example identifier
+- `children` (Attributes List) Empty list of child folders (see [below for nested schema](#nestedatt--children--children))
+- `created` (String) Creation timestamp of the child folder
 - `credentials` (Attributes List) (see [below for nested schema](#nestedatt--children--credentials))
-- `expires` (String) Example identifier
-- `modified` (String) Example identifier
-- `name` (String) Example identifier
-- `notes` (String) Example identifier
-- `parentid` (String) Example identifier
+- `expires` (String) Expiration timestamp of the child folder
+- `id` (String) Identifier of the child folder
+- `modified` (String) Last modified timestamp of the child folder
+- `name` (String) Name of the child folder
+- `notes` (String) Notes for the child folder
+- `parentid` (String) Identifier of the  parent folder
 - `tags` (Attributes List) (see [below for nested schema](#nestedatt--children--tags))
 
 <a id="nestedatt--children--children"></a>
@@ -71,23 +68,23 @@ Read-Only:
 
 Read-Only:
 
-- `created` (String) Example identifier
-- `expires` (String) Example identifier
-- `folderid` (String) Example identifier
-- `id` (String) Example identifier
-- `modified` (String) Example identifier
-- `name` (String) Example identifier
-- `notes` (String) Example identifier
+- `created` (String) The creation date of the credential
+- `expires` (String) The expiration date of the credential
+- `folderid` (String) The folder ID of the credential
+- `id` (String) The unique identifier of the credential
+- `modified` (String) The modification date of the credential
+- `name` (String) The name of the credential
+- `notes` (String) The notes of the credential
 - `tags` (Attributes List) (see [below for nested schema](#nestedatt--children--credentials--tags))
-- `url` (String) Example identifier
-- `username` (String) Example identifier
+- `url` (String) The URL of the credential
+- `username` (String) The username of the credential
 
 <a id="nestedatt--children--credentials--tags"></a>
 ### Nested Schema for `children.credentials.tags`
 
 Read-Only:
 
-- `name` (String) Example identifier
+- `name` (String) The name of the tag
 
 
 
@@ -96,7 +93,7 @@ Read-Only:
 
 Read-Only:
 
-- `name` (String) Example identifier
+- `name` (String) Name of the tag
 
 
 
@@ -105,23 +102,23 @@ Read-Only:
 
 Read-Only:
 
-- `created` (String) Example identifier
-- `expires` (String) Example identifier
-- `folderid` (String) Example identifier
-- `id` (String) Example identifier
-- `modified` (String) Example identifier
-- `name` (String) Example identifier
-- `notes` (String) Example identifier
+- `created` (String) The creation date of the credential
+- `expires` (String) The expiration date of the credential
+- `folderid` (String) The folder ID of the credential
+- `id` (String) The unique identifier of the credential
+- `modified` (String) The modification date of the credential
+- `name` (String) The name of the credential
+- `notes` (String) The notes of the credential
 - `tags` (Attributes List) (see [below for nested schema](#nestedatt--credentials--tags))
-- `url` (String) Example identifier
-- `username` (String) Example identifier
+- `url` (String) The URL of the credential
+- `username` (String) The username of the credential
 
 <a id="nestedatt--credentials--tags"></a>
 ### Nested Schema for `credentials.tags`
 
 Read-Only:
 
-- `name` (String) Example identifier
+- `name` (String) The name of the tag
 
 
 
@@ -130,4 +127,4 @@ Read-Only:
 
 Read-Only:
 
-- `name` (String) Example identifier
+- `name` (String) Name of the tag

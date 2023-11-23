@@ -3,12 +3,12 @@
 page_title: "pleasantpassword_folder Resource - terraform-provider-pleasant-password-server"
 subcategory: ""
 description: |-
-  Example resource
+  The folder resource allows you to create and manage folders in Pleasant Password Server.
 ---
 
 # pleasantpassword_folder (Resource)
 
-Example resource
+The `folder` resource allows you to create and manage folders in Pleasant Password Server.
 
 
 
@@ -17,13 +17,13 @@ Example resource
 
 ### Required
 
-- `name` (String) Example identifier
+- `name` (String) The name of the folder.
 
 ### Optional
 
-- `notes` (String) Example identifier
-- `parentid` (String) Example identifier
+- `notes` (String) Additional notes for the folder.
+- `parentid` (String) The identifier of the parent folder.
 
 ### Read-Only
 
-- `id` (String) Example configurable attribute
+- `id` (String) The unique identifier of the folder.

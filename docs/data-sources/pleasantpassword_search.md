@@ -17,7 +17,7 @@ Example data source
 
 ### Required
 
-- `search` (String) Example identifier
+- `search` (String) The search query for credentials and folders.
 
 ### Read-Only
 
@@ -29,13 +29,13 @@ Example data source
 
 Read-Only:
 
-- `folderid` (String) Example identifier
-- `id` (String) Example identifier
-- `name` (String) Example identifier
-- `notes` (String) Example identifier
-- `path` (String) Example identifier
-- `url` (String) Example identifier
-- `username` (String) Example identifier
+- `folderid` (String) The identifier of the folder that the credential belongs to.
+- `id` (String) The identifier of the credential.
+- `name` (String) The name of the credential.
+- `notes` (String) The notes of the credential.
+- `path` (String) The path of the credential.
+- `url` (String) The URL of the credential.
+- `username` (String) The username of the credential.
 
 
 <a id="nestedatt--folders"></a>
@@ -43,6 +43,6 @@ Read-Only:
 
 Read-Only:
 
-- `fullpath` (String) Example identifier
-- `id` (String) Example identifier
-- `name` (String) Example identifier
+- `fullpath` (String) The full path of the folder.
+- `id` (String) The identifier of the folder.
+- `name` (String) The name of the folder.
