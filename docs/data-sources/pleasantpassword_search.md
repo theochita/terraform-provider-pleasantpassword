@@ -3,12 +3,12 @@
 page_title: "pleasantpassword_search Data Source - terraform-provider-pleasant-password-server"
 subcategory: ""
 description: |-
-  Example data source
+  The search data source can be used to search for credentials and folders.
 ---
 
 # pleasantpassword_search (Data Source)
 
-Example data source
+The `search` data source can be used to search for credentials and folders.
 
 ## Example Usage
 
