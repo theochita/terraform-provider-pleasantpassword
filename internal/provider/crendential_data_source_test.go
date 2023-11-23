@@ -43,7 +43,7 @@ resource "pleasantpassword_folder" "create_folder" {
 
 resource "pleasantpassword_credential" "cred1_test" {
 	name = "acctest_credential1"
-	groupid =  pleasantpassword_folder.create_folder.id
+	folderid =  pleasantpassword_folder.create_folder.id
 	password = "acctest_password1"
 	notes = "acctest notes"
 	username = "acctest_username1"

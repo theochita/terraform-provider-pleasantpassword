@@ -17,7 +17,7 @@ Example resource
 
 ### Required
 
-- `groupid` (String) Example identifier
+- `folderid` (String) Example identifier
 - `name` (String) Example identifier
 
 ### Optional

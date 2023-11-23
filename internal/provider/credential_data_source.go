@@ -39,7 +39,7 @@ type CredentialDataSourceModel struct {
 	Password     types.String `tfsdk:"password"`
 	Url          types.String `tfsdk:"url"`
 	Notes        types.String `tfsdk:"notes"`
-	GroupId      types.String `tfsdk:"groupid"`
+	FolderId     types.String `tfsdk:"folderid"`
 	Created      types.String `tfsdk:"created"`
 	Modified     types.String `tfsdk:"modified"`
 	Expires      types.String `tfsdk:"expires"`
@@ -83,7 +83,7 @@ func (d *CredentialDataSource) Schema(ctx context.Context, req datasource.Schema
 				MarkdownDescription: "Example identifier",
 				Computed:            true,
 			},
-			"groupid": schema.StringAttribute{
+			"folderid": schema.StringAttribute{
 				MarkdownDescription: "Example identifier",
 				Computed:            true,
 			},
@@ -194,7 +194,7 @@ func (d *CredentialDataSource) Read(ctx context.Context, req datasource.ReadRequ
 	data.Username = types.StringValue(res.GetUsername())
 	data.Url = types.StringValue(res.GetUrl())
 	data.Notes = types.StringValue(res.GetNotes())
-	data.GroupId = types.StringValue(res.GetGroupId())
+	data.FolderId = types.StringValue(res.GetGroupId())
 	data.Created = types.StringValue("Not implemented")
 	data.Modified = types.StringValue("Not implemented")
 	data.Expires = types.StringValue(res.GetExpires())

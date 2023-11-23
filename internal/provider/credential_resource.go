@@ -39,7 +39,7 @@ type CredentialResourceModel struct {
 	Password types.String `tfsdk:"password"`
 	Url      types.String `tfsdk:"url"`
 	Notes    types.String `tfsdk:"notes"`
-	GroupId  types.String `tfsdk:"groupid"`
+	FolderId types.String `tfsdk:"folderid"`
 	Created  types.String `tfsdk:"created"`
 	Modified types.String `tfsdk:"modified"`
 	Expires  types.String `tfsdk:"expires"`
@@ -86,7 +86,7 @@ func (r *CredentialResource) Schema(ctx context.Context, req resource.SchemaRequ
 				Computed:            true,
 				Optional:            true,
 			},
-			"groupid": schema.StringAttribute{
+			"folderid": schema.StringAttribute{
 				MarkdownDescription: "Example identifier",
 				Required:            true,
 			},
@@ -153,7 +153,7 @@ func (r *CredentialResource) Create(ctx context.Context, req resource.CreateRequ
 	param := PPSClient.NewV6CredentialInputWithDefaults()
 	param.Name = data.Name.ValueStringPointer()
 	param.Notes = data.Notes.ValueStringPointer()
-	param.GroupId = data.GroupId.ValueStringPointer()
+	param.GroupId = data.FolderId.ValueStringPointer()
 	param.Username = data.Username.ValueStringPointer()
 	param.Password = data.Password.ValueStringPointer()
 	param.Url = data.Url.ValueStringPointer()
@@ -182,7 +182,7 @@ func (r *CredentialResource) Create(ctx context.Context, req resource.CreateRequ
 	data.Id = types.StringValue(sanityresult)
 	data.Name = types.StringValue(param.GetName())
 	data.Notes = types.StringValue(param.GetNotes())
-	data.GroupId = types.StringValue(param.GetGroupId())
+	data.FolderId = types.StringValue(param.GetGroupId())
 	data.Username = types.StringValue(param.GetUsername())
 	data.Password = types.StringValue(param.GetPassword())
 	data.Url = types.StringValue(param.GetUrl())
@@ -224,7 +224,7 @@ func (r *CredentialResource) Read(ctx context.Context, req resource.ReadRequest,
 	data.Username = types.StringValue(res.GetUsername())
 	data.Url = types.StringValue(res.GetUrl())
 	data.Notes = types.StringValue(res.GetNotes())
-	data.GroupId = types.StringValue(res.GetGroupId())
+	data.FolderId = types.StringValue(res.GetGroupId())
 	data.Created = types.StringValue("Not implemented")
 	data.Modified = types.StringValue("Not implemented")
 	data.Expires = types.StringValue("Not implemented")
@@ -271,7 +271,7 @@ func (r *CredentialResource) Update(ctx context.Context, req resource.UpdateRequ
 	param := PPSClient.NewV6CredentialInputWithDefaults()
 	param.Name = data.Name.ValueStringPointer()
 	param.Notes = data.Notes.ValueStringPointer()
-	param.GroupId = data.GroupId.ValueStringPointer()
+	param.GroupId = data.FolderId.ValueStringPointer()
 	param.Username = data.Username.ValueStringPointer()
 	param.Password = data.Password.ValueStringPointer()
 	param.Url = data.Url.ValueStringPointer()
@@ -293,7 +293,7 @@ func (r *CredentialResource) Update(ctx context.Context, req resource.UpdateRequ
 
 	data.Name = types.StringValue(param.GetName())
 	data.Notes = types.StringValue(param.GetNotes())
-	data.GroupId = types.StringValue(param.GetGroupId())
+	data.FolderId = types.StringValue(param.GetGroupId())
 	data.Username = types.StringValue(param.GetUsername())
 	data.Password = types.StringValue(param.GetPassword())
 	data.Url = types.StringValue(param.GetUrl())

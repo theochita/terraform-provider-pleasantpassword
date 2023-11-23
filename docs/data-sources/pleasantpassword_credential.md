@@ -50,7 +50,7 @@ data "pleasantpassword_credential" "get_credential" {
 
 - `created` (String) Example identifier
 - `expires` (String) Example identifier
-- `groupid` (String) Example identifier
+- `folderid` (String) Example identifier
 - `id` (String) Example identifier
 - `modified` (String) Example identifier
 - `name` (String) Example identifier

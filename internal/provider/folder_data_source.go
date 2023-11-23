@@ -121,7 +121,7 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 							MarkdownDescription: "Example identifier",
 							Computed:            true,
 						},
-						"groupid": schema.StringAttribute{
+						"folderid": schema.StringAttribute{
 							MarkdownDescription: "Example identifier",
 							Computed:            true,
 						},
@@ -227,7 +227,7 @@ func (d *FolderDataSource) Schema(ctx context.Context, req datasource.SchemaRequ
 										MarkdownDescription: "Example identifier",
 										Computed:            true,
 									},
-									"groupid": schema.StringAttribute{
+									"folderid": schema.StringAttribute{
 										MarkdownDescription: "Example identifier",
 										Computed:            true,
 									},
@@ -307,7 +307,7 @@ func (d *FolderDataSource) fetchCredentials(res []PPSClient.V6CredentialResult) 
 		cred.Username = types.StringValue(v.GetUsername())
 		cred.Url = types.StringValue(v.GetUrl())
 		cred.Notes = types.StringValue(v.GetNotes())
-		cred.GroupId = types.StringValue(v.GetGroupId())
+		cred.Folderid = types.StringValue(v.GetGroupId())
 		cred.Created = types.StringValue("Not implemented")
 		cred.Modified = types.StringValue("Not implemented")
 		cred.Expires = types.StringValue(v.GetExpires())
