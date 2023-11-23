@@ -23,13 +23,11 @@ func NewCredentialDataSource() datasource.DataSource {
 	return &CredentialDataSource{}
 }
 
-// ExampleDataSource defines the data source implementation.
 type CredentialDataSource struct {
 	client *PPSClient.APIClient
 	ctx    *context.Context
 }
 
-// ExampleDataSourceModel describes the data source data model.
 type CredentialDataSourceModel struct {
 	Id           types.String `tfsdk:"id"`
 	CredentialID types.String `tfsdk:"credential_id"`
@@ -158,18 +156,6 @@ func (d *CredentialDataSource) Read(ctx context.Context, req datasource.ReadRequ
 	if resp.Diagnostics.HasError() {
 		return
 	}
-
-	// If applicable, this is a great opportunity to initialize any necessary
-	// provider client data and make a call using it.
-	// httpResp, err := d.client.Do(httpReq)
-	// if err != nil {
-	//     resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to read example, got error: %s", err))
-	//     return
-	// }
-
-	// For the purposes of this example code, hardcoding a response value to
-	// save into the Terraform state.
-	//data.Id = types.StringValue("example-id")
 
 	credential_id := data.CredentialID.ValueString()
 

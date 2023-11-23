@@ -22,13 +22,11 @@ func NewFolderDataSource() datasource.DataSource {
 	return &FolderDataSource{}
 }
 
-// ExampleDataSource defines the data source implementation.
 type FolderDataSource struct {
 	client *PPSClient.APIClient
 	ctx    *context.Context
 }
 
-// ExampleDataSourceModel describes the data source data model.
 type FolderDataSourceModel struct {
 	Id          types.String             `tfsdk:"id"`
 	FolderID    types.String             `tfsdk:"folderid"`
@@ -356,18 +354,6 @@ func (d *FolderDataSource) Read(ctx context.Context, req datasource.ReadRequest,
 	if resp.Diagnostics.HasError() {
 		return
 	}
-
-	// If applicable, this is a great opportunity to initialize any necessary
-	// provider client data and make a call using it.
-	// httpResp, err := d.client.Do(httpReq)
-	// if err != nil {
-	//     resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to read example, got error: %s", err))
-	//     return
-	// }
-
-	// For the purposes of this example code, hardcoding a response value to
-	// save into the Terraform state.
-	//data.Id = types.StringValue("example-id")
 
 	folderid := data.FolderID.ValueString()
 

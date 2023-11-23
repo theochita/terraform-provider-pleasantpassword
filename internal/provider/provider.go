@@ -20,10 +20,8 @@ import (
 	PPSClient "github.com/theochita/go-pleasant-password"
 )
 
-// Ensure ScaffoldingProvider satisfies various provider interfaces.
 var _ provider.Provider = &PleasantpasswordProvider{}
 
-// ScaffoldingProvider defines the provider implementation.
 type PleasantpasswordProvider struct {
 	// version is set to the provider version on release, "dev" when the
 	// provider is built and ran locally, and "test" when running acceptance
@@ -31,7 +29,6 @@ type PleasantpasswordProvider struct {
 	version string
 }
 
-// ScaffoldingProviderModel describes the provider data model.
 type PleasantpasswordProviderModel struct {
 	ServerURL      types.String `tfsdk:"server_url"`
 	Username       types.String `tfsdk:"username"`
@@ -216,7 +213,7 @@ func (p *PleasantpasswordProvider) Configure(ctx context.Context, req provider.C
 		return
 	} else {
 
-		fmt.Printf("Authenticated Successful\n")
+		//fmt.Printf("Authenticated Successful\n")
 		//fmt.Printf("Bearer token: %s\n", *res.AccessToken)
 		clientctx = context.WithValue(context.Background(), PPSClient.ContextAccessToken, *res.AccessToken)
 	}

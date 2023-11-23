@@ -22,13 +22,11 @@ func NewSearchDataSource() datasource.DataSource {
 	return &SearchDataSource{}
 }
 
-// ExampleDataSource defines the data source implementation.
 type SearchDataSource struct {
 	client *PPSClient.APIClient
 	ctx    *context.Context
 }
 
-// ExampleDataSourceModel describes the data source data model.
 type SearchDataSourceModel struct {
 	Search      types.String                           `tfsdk:"search"`
 	Credentials []models.V6CredentialSearchResult      `tfsdk:"credentials"`
@@ -168,18 +166,6 @@ func (d *SearchDataSource) Read(ctx context.Context, req datasource.ReadRequest,
 	if resp.Diagnostics.HasError() {
 		return
 	}
-
-	// If applicable, this is a great opportunity to initialize any necessary
-	// provider client data and make a call using it.
-	// httpResp, err := d.client.Do(httpReq)
-	// if err != nil {
-	//     resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to read example, got error: %s", err))
-	//     return
-	// }
-
-	// For the purposes of this example code, hardcoding a response value to
-	// save into the Terraform state.
-	//data.Id = types.StringValue("example-id")
 
 	client := d.client
 

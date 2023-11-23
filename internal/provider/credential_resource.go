@@ -24,13 +24,11 @@ func NewCredentialResource() resource.Resource {
 	return &CredentialResource{}
 }
 
-// ExampleResource defines the resource implementation.
 type CredentialResource struct {
 	client *PPSClient.APIClient
 	ctx    *context.Context
 }
 
-// ExampleResourceModel describes the resource data model.
 type CredentialResourceModel struct {
 	Id types.String `tfsdk:"id"`
 	//Tags     []Tag        `tfsdk:"tags"`
@@ -139,17 +137,6 @@ func (r *CredentialResource) Create(ctx context.Context, req resource.CreateRequ
 		return
 	}
 
-	// If applicable, this is a great opportunity to initialize any necessary
-	// provider client data and make a call using it.
-	// httpResp, err := r.client.Do(httpReq)
-	// if err != nil {
-	//     resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to create example, got error: %s", err))
-	//     return
-	// }
-
-	// For the purposes of this example code, hardcoding a response value to
-	// save into the Terraform state.
-
 	param := PPSClient.NewV6CredentialInputWithDefaults()
 	param.Name = data.Name.ValueStringPointer()
 	param.Notes = data.Notes.ValueStringPointer()
@@ -246,14 +233,6 @@ func (r *CredentialResource) Read(ctx context.Context, req resource.ReadRequest,
 	}
 	data.Password = types.StringValue(sanitypassword)
 
-	// If applicable, this is a great opportunity to initialize any necessary
-	// provider client data and make a call using it.
-	// httpResp, err := r.client.Do(httpReq)
-	// if err != nil {
-	//     resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to read example, got error: %s", err))
-	//     return
-	// }
-
 	// Save updated data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
@@ -301,14 +280,6 @@ func (r *CredentialResource) Update(ctx context.Context, req resource.UpdateRequ
 	data.Modified = types.StringValue("Not implemented")
 	data.Expires = types.StringValue("Not implemented")
 
-	// If applicable, this is a great opportunity to initialize any necessary
-	// provider client data and make a call using it.
-	// httpResp, err := r.client.Do(httpReq)
-	// if err != nil {
-	//     resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to update example, got error: %s", err))
-	//     return
-	// }
-
 	// Save updated data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
@@ -340,13 +311,6 @@ func (r *CredentialResource) Delete(ctx context.Context, req resource.DeleteRequ
 		return
 	}
 
-	// If applicable, this is a great opportunity to initialize any necessary
-	// provider client data and make a call using it.
-	// httpResp, err := r.client.Do(httpReq)
-	// if err != nil {
-	//     resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to delete example, got error: %s", err))
-	//     return
-	// }
 }
 
 func (r *CredentialResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {

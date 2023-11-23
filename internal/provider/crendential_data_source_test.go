@@ -20,7 +20,6 @@ func TestAccCredentialDataSource(t *testing.T) {
 				Check: resource.ComposeAggregateTestCheckFunc(
 					resource.TestCheckResourceAttr("data.pleasantpassword_credential.get_credential_test", "name", "acctest_credential1"),
 					resource.TestCheckResourceAttr("data.pleasantpassword_credential.get_credential_test", "password", "acctest_password1"),
-					//resource.TestCheckResourceAttrPair("data.pleasantpassword_folder.fetch_root_folder_test", "parentid", "data.pleasantpassword_folder_root.root_folder_id_test", "id"),
 				),
 			},
 		},
