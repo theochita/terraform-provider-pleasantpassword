@@ -40,7 +40,7 @@ func (d SearchDataSource) Metadata(ctx context.Context, req datasource.MetadataR
 func (d *SearchDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "Example data source",
+		MarkdownDescription: "The `search` data source can be used to search for credentials and folders.",
 
 		Attributes: map[string]schema.Attribute{
 			"search": schema.StringAttribute{
